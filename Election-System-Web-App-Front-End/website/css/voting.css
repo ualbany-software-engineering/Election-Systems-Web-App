@@ -1,0 +1,73 @@
+body {
+    grid-template-areas: 
+    "header"
+    "election"
+    "footer";
+    grid-template-columns: 1fr;
+}
+
+h1 {
+    padding: auto;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between
+}
+
+#header button {
+    border-radius: 1em;
+    padding: 1em;
+    position: relative;
+    width: 9em;
+}
+
+#election {
+    grid-area: election;
+    display: grid;
+    grid-template-areas:
+    "description description" 
+    "candidate1 candidate2";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 4fr;
+    margin-bottom: 2em;
+}
+
+#description {
+    grid-area: description;
+    text-align: center;
+}
+
+.candidate {
+    margin: auto;
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.candidate button {
+    display: block;
+}
+
+#candidate1 {
+    grid-area: candidate1;
+}
+
+#candidate2 {
+    grid-area: candidate2;
+}
+
+.candidate_img {
+    width: 15em;
+}
+
+.candidate_name {
+    margin: 0;
+}
+
+.candidate button {
+    padding: 0.5em 1.5em;
+    font-size: 2em;
+    margin-top: 0.5em;
+}

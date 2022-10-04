@@ -1,0 +1,14 @@
+{
+  "name": "voting_app",
+  "version": "1.0.0",
+  "description": "\"website\" folder contains all files for the website\r - \"index.html\" is the login page\r - \"signup.html\" is the create account page\r - \"home.html\" is the page that lists elections\r - \"voting.html\" displays the current election and enables voting\r - \"submitted.html\" displays after vote submission\r - \"results.html\" lists all previous elections\r - \"result.html\" displays the result of one election\r - each html has a corresponding css file inside the \"css\" folder\r - - \"styles.css\" is the base css file\r - \"imgs\" folder holds candidates images\r - \"js\" folder holds java script files for all pages\r - - \"home.js\" welcomes the user and list elections in both elections lists\r - - \"result.js\" displays the result of one election\r - - \"results.js\" adds to the list all previous results\r - - \"elections.js\" prints election title and description\r - - \"voting.js\" controls the content of voting page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}

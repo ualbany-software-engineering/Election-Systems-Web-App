@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/home.css">
+  </head>
+  <body>
+
+    <h1>Welcome {name}!</h1>
+
+    <!-- currently going on -->
+    <div id="current" class="elections_div">
+        <p>Elections currently going on:</p>
+        <ul>
+            <a href="voting.html?q=gif"><li>GIF vs GIF</li></a>
+            <a href="voting.html?q=cereal"><li>Which is first, Milk or Cereal</li></a>
+            <a href="voting.html?q=ford_vs_chevy"><li>Ford vs Chevy</li></a>
+            <a href="voting.html?q=apple_cherry"><li>Apple vs Cherries</li></a>
+            <a href="voting.html?q=apple_samsung"><li>Apple vs Samsung</li></a>
+        </ul>
+    </div>
+
+    <!-- recent elections -->
+    <div id="recent" class="elections_div">
+        <p>Results of recent elections:</p>
+        <ul>
+            <a href="result.html?q=pluto"><li>Pluto: planet or not</li></a>
+            <a href="result.html?q=flat_earth"><li>Earth: flat or round</li></a>
+        </ul>
+        <div id="view_all">
+            <a href="results.html">View all results</a>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <ul id="footer">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Legal (?)</a></li>
+        <li><a href="">Other Info</a></li>
+    </ul>
+
+
+	<script src="js/home.js"></script>
+  </body>
+</html>
