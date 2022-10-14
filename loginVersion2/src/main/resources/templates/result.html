@@ -13,9 +13,14 @@
   <body>
 
     <div id="header">
-        <a href="results.html"><button id="home">Back to Results</button></a>
+        <a href="results"><button id="home">Back to Results</button></a>
         <h1>Result: {Election Title}</h1>
-        <a href="index.html"><button id="logout">Logout</button></a>
+        <div>
+	        <form th:action="@{/logout}" method="post">
+	       
+	        	<input type="submit" value="Log out"/>
+	        </form>
+	    </div>
     </div>
 
     <div id="election">
@@ -47,7 +52,7 @@
 
     <!-- footer -->
     <ul id="footer">
-        <li><a href="home.html">Home</a></li>
+        <li><a href="homepage">Home</a></li>
         <li><a href="">About</a></li>
         <li><a href="">Legal (?)</a></li>
         <li><a href="">Other Info</a></li>

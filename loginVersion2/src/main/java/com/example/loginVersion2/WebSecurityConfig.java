@@ -48,6 +48,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 			.antMatchers("/homepage").authenticated()
+			.antMatchers("/voting").authenticated()
+			.antMatchers("/results").authenticated()
+			.antMatchers("/sumbitted").authenticated()
+			.antMatchers("/result").authenticated()
 			.anyRequest().permitAll()
 			.and()
 			.formLogin()

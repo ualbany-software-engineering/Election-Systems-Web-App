@@ -13,22 +13,27 @@
   <body>
 
     <div id="header">
-        <a href="home.html"><button id="home">Back to Home</button></a>
+        <a href="homepage"><button id="home">Back to Home</button></a>
         <h1>Results</h1>
-        <a href="index.html"><button id="logout">Logout</button></a>
+        <div>
+	        <form th:action="@{/logout}" method="post">
+	       
+	        	<input type="submit" value="Log out"/>
+	        </form>
+	    </div>
     </div>
 
     <!-- all past elections -->
     <div id="old" class="elections_div">
         <ul>
-            <a href="result.html?q=pluto"><li>Pluto, a planet or not</li></a>
-            <a href="result.html?q=flat_earth"><li>Earth, flat or not</li></a>
+            <a href="result?q=pluto"><li>Pluto, a planet or not</li></a>
+            <a href="result?q=flat_earth"><li>Earth, flat or not</li></a>
         </ul>
     </div>
 
     <!-- footer -->
     <ul id="footer">
-        <li><a href="home.html">Home</a></li>
+        <li><a href="homepage">Home</a></li>
         <li><a href="">About</a></li>
         <li><a href="">Legal (?)</a></li>
         <li><a href="">Other Info</a></li>
