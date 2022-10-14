@@ -1,0 +1,49 @@
+body {
+    grid-template-areas: 
+    "header"
+    "signup"
+    "footer";
+    grid-template-rows: 7em 1fr 3em;
+    grid-template-columns: 1fr;
+    min-height: 100%;
+    margin-left: 8em;
+    margin-right: 8em;
+}
+
+button {
+    border-radius: 0.5em;
+}
+
+#header {
+    display: flex;
+}
+
+h1 {
+    margin: 1em auto;
+}
+
+#signup {
+    border: 0;
+}
+
+.login_signup form {
+    align-items: center;
+}
+
+.login_input {
+    max-width: 25em;;
+}
+
+.login_input p {
+    direction: rtl;
+    width: 8em;
+    margin-right: 1em;
+}
+
+#signup button {
+    padding: 1em 2em;
+}
+
+#loginButton {
+    padding: 0.5em 1em;
+}

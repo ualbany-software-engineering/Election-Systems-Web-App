@@ -1,0 +1,23 @@
+#summary {
+    grid-area: description;
+}
+
+#count {
+    text-align: center;
+}
+
+.won img {
+    filter: brightness(110%)
+}
+
+.won h3 {
+    color: green;
+}
+
+.lost img {
+    filter: brightness(50%)
+}
+
+.lost h3 {
+    color: brown;
+}

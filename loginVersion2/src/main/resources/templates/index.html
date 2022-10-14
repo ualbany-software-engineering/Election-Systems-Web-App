@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Log in</title>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+
+    <h1>Welcome to the Election System WebApp (Title Pending)</h1>
+    
+
+
+    <!-- login -->
+    <div class="login_signup" id="login">
+        <p>Already have an account? Log in here:</p>
+        <!--<form th:action="@{/login}" method="post">-->
+        <form th:href="@{/homepage}" method="post">
+            <div th:if="${param.error}">
+                Invalid username and password.
+            </div>
+            <div th:if="${param.logout}">
+                You have been logged out.
+            </div>
+            <div><label> User Name : <input type="text" name="username"/> </label></div>
+            <div><label> Password: <input type="password" name="password"/> </label></div>
+            <div><a th:href="@{/homepage}">Sign-in</a></div>
+        </form>
+    </div>
+    <!-- sign up -->
+    <div class="login_signup" id="signup">
+        <p>Don’t have an account?</p>
+        <a th:href="@{/signup}">Create Account</a>
+    </div>
+
+    <!-- footer -->
+    <ul id="footer">
+        <li><a href="home">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Legal (?)</a></li>
+        <li><a href="">Other Info</a></li>
+    </ul>
+
+  </body>
+</html>

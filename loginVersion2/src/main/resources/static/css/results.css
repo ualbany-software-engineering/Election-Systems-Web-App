@@ -1,0 +1,7 @@
+body {
+    grid-template-areas: 
+    "header"
+    "results"
+    "footer";
+    grid-template-columns: 1fr;
+}

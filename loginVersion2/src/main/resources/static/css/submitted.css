@@ -1,0 +1,9 @@
+#return {
+    grid-area: election;
+    margin: auto;
+}
+
+#return button {
+    padding: 1em 2em;
+    font-size: 2em;
+}
