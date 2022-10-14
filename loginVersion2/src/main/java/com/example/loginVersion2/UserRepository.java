@@ -1,8 +1,11 @@
 package com.example.loginVersion2;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
+	@Query("SELECT u FROM User u WHERE u.username = ?1")
+	User findByUsername(String username);
 	
 }//end class

@@ -14,7 +14,6 @@ public class A_Start {
 
 	public static void main(String[] args) {
 		
-		
 		SpringApplication.run(A_Start.class, args);
 	}
 	

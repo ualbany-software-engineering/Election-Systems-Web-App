@@ -14,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class WebLogin {
 
-	
+	/*
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
@@ -42,5 +42,6 @@ public class WebLogin {
     public String toString() {
         return "WebSecurityConfig []";
     }
+    */
     
 }

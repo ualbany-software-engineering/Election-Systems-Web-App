@@ -10,8 +10,8 @@
   </head>
   <body>
 
-    <h1>Welcome {name}!</h1>
-
+    <h1>Welcome!</h1>
+  
     <!-- currently going on -->
     <div id="current" class="elections_div">
         <p>Elections currently going on:</p>
@@ -35,13 +35,21 @@
             <a href="results">View all results</a>
         </div>
     </div>
+    
+   	 	<div>
+	        <form th:action="@{/logout}" method="post">
+	        	<input type="submit" value="Log out"/>
+	        </form>
+	    </div>
 
     <!-- footer -->
     <ul id="footer">
-        <li><a href="home">Home</a></li>
-        <li><a href="">About</a></li>
-        <li><a href="">Legal (?)</a></li>
-        <li><a href="">Other Info</a></li>
+        <div>
+	        <form th:action="@{/logout}" method="post">
+	       
+	        	<input type="submit" value="Log out"/>
+	        </form>
+	    </div>
     </ul>
 
 

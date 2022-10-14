@@ -34,5 +34,14 @@ public class UserRepositoryTest {
 			
 			assertThat(existUser.getName()).isEqualTo(savedUser.getName());
 		}//end testCreateUser
+		
+		@Test
+		public void testFindUserbyUsername() {
+			String username = "Spliced";
+			
+			User user = repo.findByUsername(username);
+			
+			assertThat(user).isNotNull();
+		}//end testFindUserByUsername
 	
 }//end test class
