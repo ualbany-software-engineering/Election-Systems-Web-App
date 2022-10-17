@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.annotation.Rollback;
 
 @DataJpaTest
@@ -23,10 +24,13 @@ public class UserRepositoryTest {
 		
 		@Test
 		public void testCreateUser() {
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			
+			//change info to run different test
 			User user = new User();
-			user.setName("Dawn Rhea");
-			user.setPassword("dawntest");
-			user.setUsername("dawn1896");
+			user.setName("Jonathan Rhea");
+			user.setPassword(encoder.encode("jontest"));
+			user.setUsername("jonrhea");
 			
 			User savedUser = repo.save(user);
 			
@@ -35,13 +39,17 @@ public class UserRepositoryTest {
 			assertThat(existUser.getName()).isEqualTo(savedUser.getName());
 		}//end testCreateUser
 		
+		
 		@Test
 		public void testFindUserbyUsername() {
-			String username = "Spliced";
+			
+			//change name to run different test
+			String username = "jonrhea";
 			
 			User user = repo.findByUsername(username);
 			
 			assertThat(user).isNotNull();
 		}//end testFindUserByUsername
+	
 	
 }//end test class
