@@ -18,7 +18,7 @@ public class Candidate {
 	@Column(nullable = false, unique = true, length = 20)
 	private String name;
 
-	@Column(nullable = false, unique = true, length = 20)
+	@Column(nullable = false, unique = true, length = 20, updatable = true)
 	private int votes;
 	
 	public long getId() {

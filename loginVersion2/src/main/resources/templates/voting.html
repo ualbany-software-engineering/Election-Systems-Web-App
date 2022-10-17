@@ -27,18 +27,21 @@
         <div id="candidate1" class="candidate">
             <h2 class="candidate_name">Candidate1 Name</h2>
             <img class="candidate_img" src="imgs/candidate.jpg">
-			<a href="submitted">
+            
+            <form th:action="@{/confirm_vote}" method="post" th:object="${id}">
+            <input type="hidden" name="id" value="1"/>
 				<button>Vote</button>
-			</a>
+	        </form>
         </div>
 
         <!-- 2nd candidate -->
         <div id="candidate2" class="candidate">
             <h2 class="candidate_name">Candidate2 Name</h2>
             <img class="candidate_img" src="imgs/candidate.jpg">
-			<a href="submitted">
+			<form th:action="@{/confirm_vote}" method="post" th:object="${id}">
+				<input type="hidden" name="id" value="7"/>
 				<button>Vote</button>
-			</a>
+	        </form>
         </div>
     </div>
 

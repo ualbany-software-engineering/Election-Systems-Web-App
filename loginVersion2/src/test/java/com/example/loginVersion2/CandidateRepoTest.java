@@ -47,4 +47,16 @@ public class CandidateRepoTest {
 		
 		assertThat(candidate).isNotNull();
 	}//end testFindUserByUsername
+	
+	@Test
+	public void testVote() {
+		Candidate candidateToVote = canRepo.findById(1);
+		int oldVote = candidateToVote.getVotes();
+		candidateToVote.setVotes(oldVote + 1);
+		
+		int newVote = candidateToVote.getVotes();
+		
+		assertThat(oldVote == (newVote - 1));
+		
+	}//end testVote
 }
