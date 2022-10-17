@@ -11,7 +11,7 @@
 }
 
 .won h3 {
-    color: green;
+    color: #ffbf00;
 }
 
 .lost img {
@@ -19,5 +19,12 @@
 }
 
 .lost h3 {
-    color: brown;
+    color: rgb(255, 0, 0);
+}
+
+.won h4{
+    color: #ffbf00;
+}
+.lost h4{
+    color: rgb(255, 0, 0);
 }
