@@ -1,0 +1,30 @@
+#summary {
+    grid-area: description;
+}
+
+#count {
+    text-align: center;
+}
+
+.won img {
+    filter: brightness(110%)
+}
+
+.won h3 {
+    color: #ffbf00;
+}
+
+.lost img {
+    filter: brightness(50%)
+}
+
+.lost h3 {
+    color: rgb(255, 0, 0);
+}
+
+.won h4{
+    color: #ffbf00;
+}
+.lost h4{
+    color: rgb(255, 0, 0);
+}

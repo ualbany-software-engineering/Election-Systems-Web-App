@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vote</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/voting.css">
+  </head>
+  <body>
+
+    <div id="header">
+        <a href="home.html"><button id="home">Back to Home</button></a>
+        <h1>{Election Title}</h1>
+        <a href="index.html"><button id="logout">Logout</button></a>
+    </div>
+
+    <div id="election">
+        <p id="description">Election description</p>
+
+        <!-- 1st candidate -->
+        <div id="candidate1" class="candidate">
+            <h2 class="candidate_name">Candidate1 Name</h2>
+            <img class="candidate_img" src="imgs/candidate.jpg">
+            <a href="submitted.html">
+                <button>Vote</button>
+            </a>
+        </div>
+
+        <!-- 2nd candidate -->
+        <div id="candidate2" class="candidate">
+            <h2 class="candidate_name">Candidate2 Name</h2>
+            <img class="candidate_img" src="imgs/candidate.jpg">
+            <a href="submitted.html">
+                <button>Vote</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <ul id="footer">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Legal (?)</a></li>
+        <li><a href="">Other Info</a></li>
+    </ul>
+
+	<script src="js/election.js"></script>
+	<script src="js/voting.js"></script>
+  </body>
+</html>

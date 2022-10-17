@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Result</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/voting.css">
+    <link rel="stylesheet" href="css/result.css">
+  </head>
+  <body>
+
+    <div id="header">
+        <a href="results.html"><button id="home">Back to Results</button></a>
+        <h1>Result: {Election Title}</h1>
+        <a href="index.html"><button id="logout">Logout</button></a>
+    </div>
+
+    <div id="election">
+        <div id="summary">
+            <p id="description">Election description</p>
+            <p id="count">Total number of votes:</p>
+        </div>
+
+        <!-- 1st candidate -->
+        <div id="candidate1" class="candidate won">
+            <h2 class="candidate_name">Candidate1</h2>
+            <img class="candidate_img" src="imgs/candidate.jpg">
+            <h3 id="candidate1_result">
+                Won
+            </h3>
+            <h4>59%</h4>
+        </div>
+
+        <!-- 2nd candidate -->
+        <div id="candidate2" class="candidate lost">
+            <h2 class="candidate_name">Candidate2 this is a test</h2>
+            <img class="candidate_img" src="imgs/candidate.jpg">
+            <h3 id="candidate2_result">
+                Lost
+            </h3>
+            <h4>41%</h4>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <ul id="footer">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="">About</a></li>
+        <li><a href="">Legal (?)</a></li>
+        <li><a href="">Other Info</a></li>
+    </ul>
+
+
+	<script src="js/election.js"></script>
+	<script src="js/result.js"></script>
+  </body>
+</html>
