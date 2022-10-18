@@ -46,6 +46,10 @@ h1 {
     align-items: center;
 }
 
+.candidate h2 {
+    margin: 0.5em;
+}
+
 .candidate button {
     display: block;
 }

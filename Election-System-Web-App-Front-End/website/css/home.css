@@ -9,6 +9,7 @@ body {
     "currently recent"
     "footer footer";
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 9fr 1fr;
     min-height: 100%;
     margin-left: 8em;
     margin-right: 8em;
