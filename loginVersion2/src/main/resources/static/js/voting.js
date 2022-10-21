@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // print query to console
     console.log(QUERY);
     // display title and description
-    printTitle('dynamic election title');
-    printDescription('dynamic election description');
+    printTitle('Ford vs Chevy);
+    printDescription('Which car manufacturer do you prefer?');
     // set candidate 1 info
     populateCandidate(1, "Dynamic Name1", 'imgs/candidate.jpg');
 });

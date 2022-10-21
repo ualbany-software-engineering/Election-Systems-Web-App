@@ -13,20 +13,19 @@
 
     <div id="header">
         <a href="homepage"><button id="home">Back to Home</button></a>
-        <h1>{Election Title}</h1>
+        <h1>Ford vs Chevy</h1>
         <form th:action="@{/logout}" method="post">
              <input type="submit" value="Sign Out"/>
          </form>
-        <!-- <a href="homepage"><button id="logout">Logout</button></a> -->
+        
     </div>
-
+  
     <div id="election">
-        <p id="description">Election description</p>
-
+		<p id="description" style="font-size: 30px;">Which car manufacturer do you prefer?</p>
         <!-- 1st candidate -->
         <div id="candidate1" class="candidate">
-            <h2 class="candidate_name">Candidate1 Name</h2>
-            <img class="candidate_img" src="imgs/candidate.jpg">
+            <h2 class="candidate_name">Ford</h2>
+            <img class="candidate_img" src="imgs/Ford_logo.png">
             
             <form th:action="@{/confirm_vote}" method="post" th:object="${id}">
             <input type="hidden" name="id" value="1"/>
@@ -36,8 +35,8 @@
 
         <!-- 2nd candidate -->
         <div id="candidate2" class="candidate">
-            <h2 class="candidate_name">Candidate2 Name</h2>
-            <img class="candidate_img" src="imgs/candidate.jpg">
+            <h2 class="candidate_name">Chevy</h2>
+            <img class="candidate_img" src="imgs/Chevy_logo.png">
 			<form th:action="@{/confirm_vote}" method="post" th:object="${id}">
 				<input type="hidden" name="id" value="7"/>
 				<button>Vote</button>
