@@ -8,6 +8,7 @@ function welcomeUser (username) {
     WELCOME_HEADER.innerHTML = `Welcome, ${username}!`;
 }
 
+
 /**
  * @description append an election to a list
  * 

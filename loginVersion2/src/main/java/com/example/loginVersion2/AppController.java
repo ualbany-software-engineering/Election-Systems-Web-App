@@ -1,6 +1,11 @@
 package com.example.loginVersion2;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class AppController {
+	
+	//ScriptEngineManager manager = new ScriptEngineManager();
+	//ScriptEngine engine = manager.getEngineByName("JavaScript");
 
 	@Autowired
 	private UserRepository repo;
@@ -18,7 +26,21 @@ public class AppController {
 	
 	@GetMapping("")
 	public String viewHomePage() {	
+	
+
+			 
 		return "index";
+	}
+	
+	@GetMapping("/homepage")
+	public String getUsernameHome(Model model) {
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String username = authentication.getName();
+		User user = repo.findByUsername(username);
+		model.addAttribute("user", user);
+
+		return "homepage";
 	}
 	
 	@GetMapping("/signup")
@@ -37,7 +59,7 @@ public class AppController {
 		
 		repo.save(user);
 		return "register_success";
-	}//end user
+	}
 	
 	@PostMapping("/confirm_vote")
 	public String processVote(long id) {
@@ -49,6 +71,6 @@ public class AppController {
 		canRepo.save(candidateToVote);
 		
 		return "submitted";
-	}//end 
+	}
 	
 }
