@@ -6,7 +6,7 @@ Step 2) Import as a Maven Java project into your IDE of choice
 Step 3) For the Database, install MySQL Community	
 	- Create an instance on localhost with username "root" (should be the default settings)
 	- Set the password as "jonrheamysql" OR set your own password, copy it, 
-	and replace the old password in line 4 os application.properties
+	and replace the old password in line 4 of application.properties
 
 Step 4) Configure the Database by creating two tables
 	- First table is "users" with each coloum configured as follows (each line is a new column):

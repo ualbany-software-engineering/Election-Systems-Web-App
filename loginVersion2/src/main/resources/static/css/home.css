@@ -9,14 +9,31 @@ body {
     "currently recent"
     "footer footer";
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 9fr 1fr;
     min-height: 100%;
     margin-left: 8em;
     margin-right: 8em;
 }
 
-h1 {
-    grid-area: header;
-    text-align: center;
+#header {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+#header h1 {
+    margin: auto;
+}
+
+#logout {
+    position: absolute;
+    right: 0;
+}
+
+#header button {
+    border-radius: 1em;
+    padding: 1em;
+    width: 9em;
 }
 
 .elections_div {
@@ -37,7 +54,7 @@ h1 {
 
 .elections_div ul {
     list-style: none;
-    background-color: darkgray;
+    background-color: #56018D; /*Background of scroll boxes*/  /*faf9f6*/
     width: 20em;
     height: 20em;
     margin: auto;
@@ -51,7 +68,7 @@ h1 {
 
 .elections_div li {
     margin: 1em;
-    background-color: lightgray;
+    background: linear-gradient(#00d0ff,#006aff); /*Election button*/
     border-radius: 1em;
     padding: 1em;
 }
@@ -60,9 +77,23 @@ h1 {
     margin: auto;
     margin-top: 0.5em;
     padding: 1em;
-    background-color: lightgray;
+    background: linear-gradient(#00d0ff,#006aff); /*View all button*/
     border-radius: 1em;
     width: 18em;
     box-sizing: border-box;
     text-align: center;
+}
+
+p{
+    color: #ffbf00; /*Text above scroll boxes*/
+    font-size: 22px;
+}
+
+a{
+    color: rgb(0, 0, 0); /*Text on buttons*/
+    font-size: 18px;
+    
+}
+#footer a{
+    color: #ffbf00; /*Links at the bottom*/
 }

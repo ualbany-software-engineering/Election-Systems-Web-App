@@ -10,26 +10,26 @@
   </head>
   <body>
 
-    <h1>Welcome to the Election System WebApp (Title Pending)</h1>
-    
+    <div id="header">
+      <h1>Welcome to the NYS Election System</h1>
+      <img src="./imgs/NYS logo.png" width="400em">
+    </div>
 
 
     <!-- login -->
     <div class="login_signup" id="login">
         <p>Already have an account? Log in here: </p>
-        <form th:href="@{/homepage}" method="post">
-            <div><a th:href="@{/login}">Sign-in</a></div>
-        </form>
+        <a th:href="@{/homepage}"><button>Log-in</button></a>
     </div>
     <!-- sign up -->
     <div class="login_signup" id="signup">
         <p>Don’t have an account?</p>
-        <a th:href="@{/signup}">Create Account</a>
+        <a th:href="@{/signup}"><button>Create Account</button></a>
     </div>
 
     <!-- footer -->
     <ul id="footer">
-        <li><a href="home">Home</a></li>
+        <li><a href="homepage">Home</a></li>
         <li><a href="">About</a></li>
         <li><a href="">Legal (?)</a></li>
         <li><a href="">Other Info</a></li>
