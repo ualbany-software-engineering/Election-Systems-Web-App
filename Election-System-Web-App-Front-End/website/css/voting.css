@@ -10,18 +10,6 @@ h1 {
     padding: auto;
 }
 
-#header {
-    display: flex;
-    justify-content: space-between
-}
-
-#header button {
-    border-radius: 1em;
-    padding: 1em;
-    position: relative;
-    width: 9em;
-}
-
 #election {
     grid-area: election;
     display: grid;
@@ -36,6 +24,7 @@ h1 {
 #description {
     grid-area: description;
     text-align: center;
+    font-size: 30px;
 }
 
 .candidate {
@@ -44,6 +33,9 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
 }
 
 .candidate h2 {

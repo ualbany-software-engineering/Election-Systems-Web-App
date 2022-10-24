@@ -15,9 +15,25 @@ body {
     margin-right: 8em;
 }
 
-h1 {
-    grid-area: header;
-    text-align: center;
+#header {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+#header h1 {
+    margin: auto;
+}
+
+#logout {
+    position: absolute;
+    right: 0;
+}
+
+#header button {
+    border-radius: 1em;
+    padding: 1em;
+    width: 9em;
 }
 
 .elections_div {
@@ -70,10 +86,12 @@ h1 {
 
 p{
     color: #ffbf00; /*Text above scroll boxes*/
+    font-size: 22px;
 }
 
 a{
     color: rgb(0, 0, 0); /*Text on buttons*/
+    font-size: 18px;
     
 }
 #footer a{
