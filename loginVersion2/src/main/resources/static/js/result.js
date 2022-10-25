@@ -16,6 +16,7 @@ let results = [
             percent: 57
         }
     },
+	
     {
         q: "flat_earth",
         title: "Earth: Flat or Not",
@@ -24,12 +25,12 @@ let results = [
         candidate1: {
             name: "Round",
             img: "imgs/earth.jpg",
-            percent: 97
+            percent: 49
         },
         candidate2:  {
             name: "Flat",
             img: "imgs/flat.jpg",
-            percent: 3
+            percent: 51
         }
     }
 ]
@@ -93,6 +94,7 @@ let results = [
 }
 
 // once the document is loaded
+
 document.addEventListener('DOMContentLoaded', function () {
     // how to get query word from the url
     const CURRENT_URL = new URL(window.location.href);

@@ -50,6 +50,38 @@ public class AppController {
 		return "signup";
 	}
 	
+	@GetMapping("/result")
+	public String resultCalcualte(Model model) {
+		Candidate candidate1 = canRepo.findById(1);
+		Candidate candidate2 = canRepo.findById(7);
+		Candidate wonCandidate = null;
+		Candidate lostCandidate = null;
+		boolean tie = false;
+		
+		if(candidate1.getVotes() > candidate2.getVotes()) {
+			wonCandidate = candidate1;
+			lostCandidate = candidate2;
+		}//end if
+		else if(candidate2.getVotes() > candidate1.getVotes()) {
+			wonCandidate = candidate2;
+			lostCandidate = candidate1;
+		}//end if
+		else {
+			tie = true;
+		}//end else
+		
+		
+		if(tie == false) {
+			
+		}//end if
+		//System.out.printf("Candidate won id = %d\n", wonCandidate.id);
+		//System.out.printf("Candidate lost id = %d\n", lostCandidate.id);
+		model.addAttribute("wonCandidate", wonCandidate);
+		model.addAttribute("lostCandidate", lostCandidate);
+		
+		return "result";
+	}
+	
 
 	@PostMapping("/process_register")
 	public String processRegestration(User user) {

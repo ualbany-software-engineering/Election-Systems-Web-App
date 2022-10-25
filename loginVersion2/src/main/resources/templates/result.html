@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/voting.css">
     <link rel="stylesheet" href="css/result.css">
   </head>
-  <body>
+  <body onload = "setWinState(1, true, wonPercentage); setWinState(2, false, lostPercentage); setTotalVotes(totalVotes);">
 
     <div id="header">
         <a href="results"><button id="home">Back to Results</button></a>
@@ -29,7 +29,7 @@
         </div>
 
         <!-- 1st candidate -->
-        <div id="candidate1" class="candidate won">
+        <div id="candidate1" th:object="${wonCandidate}" class="candidate won">
             <h2 class="candidate_name">Candidate1 Name</h2>
             <img class="candidate_img" src="imgs/candidate.jpg">
             <h3 id="candidate1_result">
@@ -60,5 +60,19 @@
 
 	<script src="js/election.js"></script>
 	<script src="js/result.js"></script>
+	<script th:inline="javascript">
+		var wonCandidateID = [[${wonCandidate.id}]];
+		var wonCandidateName = [[${wonCandidate.name}]];
+		var wonCandidateVotes = [[${wonCandidate.votes}]];
+		var lostCandidateID = [[${lostCandidate.id}]];
+		var lostCandidateName = [[${lostCandidate.name}]];
+		var lostCandidateVotes = [[${lostCandidate.votes}]];
+		
+		var totalVotes = wonCandidateVotes + lostCandidateVotes
+		
+		var wonPercentage = Math.round(wonCandidateVotes / totalVotes * 100);
+		var lostPercentage = 100 - wonPercentage;
+		
+	</script>
   </body>
 </html>
