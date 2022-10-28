@@ -98,7 +98,21 @@ let current = [
             populateCandidate(2, vote.candidate2.name, vote.candidate2.img);
         } 
     }
+	
+	console.log(JSON.stringify(current, null, " "));
 }
+
+function addTopic(inputCandidate1, inputCandidate2, topicTitle, candidate1Img, candidate2Img){
+	
+	console.log(inputCandidate1);
+	
+	var newTopic = {q: inputCandidate1, title: topicTitle, candidate1:{name: inputCandidate1,
+	img: candidate1Img}, candidate2: {name: inputCandidate2, img: candidate2Img}};
+	
+	current.push(newTopic);
+	console.log(JSON.stringify(current, null, " "));
+	
+}//end addCAndidate
 
 // once the document is loaded
 document.addEventListener('DOMContentLoaded', function () {

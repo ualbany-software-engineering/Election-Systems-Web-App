@@ -25,7 +25,7 @@ public class CandidateRepoTest {
 	public void testCreateCandidate() {
 		
 		//change name to run different test
-		Candidate candidate = new Candidate("Mythra");
+		Candidate candidate = new Candidate("Mio");
 		
 		Candidate savedCandidate = canRepo.save(candidate);
 		

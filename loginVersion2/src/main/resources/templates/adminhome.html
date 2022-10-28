@@ -17,31 +17,32 @@
 
     <!-- sign up form -->
     <div class="login_signup" id="signup">
-        <form th:action="@{/process_register}" method="post" th:object="${user}">
-            <!-- name -->
             <div class="login_input">
-                <p>Name</p>
-                <input type="text" class="form-control" th:field="*{name}" required>
+                <p>First Candidate Name</p>
+                <input type="text" id="candidate1nameId" name="candidate1name">
             </div>
-            <!-- username -->
             <div class="login_input">
-                <p>Username</p>
-                <input type="text" class="form-control" th:field="*{username}" required>
+                <p>Second Candidate Name</p>
+                <input type="text"  id="candidate2nameId" name="candidate2name">
             </div>
-            <!-- password -->
             <div class="login_input">
-                <p>Password</p>
-                <input type="password" class="form-control" th:field="*{password}" required>
+                <p>Description</p>
+                <input type="text" id="descriptionId" name="description">
             </div>
-            <!-- password confirmation 
             <div class="login_input">
-                <p>Re-enter Password</p>
-                <input type="password">
-            </div>-->
+                <p>First Candidate Image</p>
+                <input type="text" id="candidate1ImageId">
+            </div>
+            
+            <div class="login_input">
+                <p>Second Candidate Image</p>
+                <input type="text" id="candidate2ImageId">
+            </div>
 
             <!-- submit button -->
-            <button type="submit" class="btn btn-primary">Create Account</button>
-        </form>
+            <button type="submit" class="btn btn-primary" onclick="addTopic(document.getElementById('candidate1nameId').value, 
+            document.getElementById('candidate2nameId').value, document.getElementById('descriptionId').value,
+            document.getElementById('candidate1ImageId').value, document.getElementById('candidate2ImageId').value)">Add Candidate</button>
     </div>
 
     <!-- footer -->
@@ -51,6 +52,9 @@
         <li><a href="">Legal (?)</a></li>
         <li><a href="">Other Info</a></li>
     </ul>
+    
+    <script src="js/voting.js"></script>
+    <script src="js/result.js"></script>
 
   </body>
 </html>
