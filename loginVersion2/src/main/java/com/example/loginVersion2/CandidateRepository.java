@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 public interface CandidateRepository extends JpaRepository<Candidate, Integer>{
 	
 	public Candidate findById(long id);
+	public Candidate findByName(String name);
 }//end class

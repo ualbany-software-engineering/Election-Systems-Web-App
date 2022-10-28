@@ -23,6 +23,7 @@ public class MyConfig implements WebMvcConfigurer {
 		registry.addViewController("/start").setViewName("start");
 		registry.addViewController("/register_success").setViewName("register_success");
 		registry.addViewController("/process_registrater").setViewName("register_success");
+		registry.addViewController("/adminhome").setViewName("adminhome");
 	}
 
 }

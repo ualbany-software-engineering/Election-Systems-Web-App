@@ -64,6 +64,19 @@ let current = [
             name: "Samsung",
             img: "imgs/samsung.png",
         }
+    },
+	{
+        q: "Pyra",
+        title: "Pyra vs Mythra",
+        description: "Who is the better character from Xenoblade Chronicles 2?",
+        candidate1: {
+            name: "Pyra",
+            img: "imgs/Pyra.jpg",
+        },
+        candidate2:  {
+            name: "Mythra",
+            img: "imgs/Mythra.jpg",
+        }
     }
 ]
 

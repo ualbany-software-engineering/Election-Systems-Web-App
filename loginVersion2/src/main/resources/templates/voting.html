@@ -28,7 +28,7 @@
             <img class="candidate_img" src="imgs/Ford_logo.png">
             
             <form th:action="@{/confirm_vote}" method="post" th:object="${id}">
-            <input type="hidden" name="id" value="1"/>
+            <input type="hidden" name="id" th:value="${candidate1.id}"/>
 				<button>Vote</button>
 	        </form>
         </div>
@@ -38,7 +38,7 @@
             <h2 class="candidate_name">Chevy</h2>
             <img class="candidate_img" src="imgs/Chevy_logo.png">
 			<form th:action="@{/confirm_vote}" method="post" th:object="${id}">
-				<input type="hidden" name="id" value="7"/>
+				<input type="hidden" name="id" th:value="${candidate2.id}">
 				<button>Vote</button>
 	        </form>
         </div>

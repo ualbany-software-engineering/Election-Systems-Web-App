@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AppController {
@@ -50,10 +51,37 @@ public class AppController {
 		return "signup";
 	}
 	
+	@GetMapping("/adminhome")
+	public String showAdmin(Model model) {
+		
+		model.addAttribute("user", new User());
+
+		return "adminhome";
+	}
+	
+	@GetMapping("/voting")
+	public String showVoting(@RequestParam(name="q", required=false) String name, Model model) {
+		Candidate candidate1 = null;
+		Candidate candidate2 = null;
+		
+		candidate1 = canRepo.findByName(name);
+		candidate2 = canRepo.findById(candidate1.getId() + 1);
+		
+		model.addAttribute("candidate1", candidate1);
+		model.addAttribute("candidate2", candidate2);
+		
+		return "voting";
+	}
+	
 	@GetMapping("/result")
-	public String resultCalcualte(Model model) {
-		Candidate candidate1 = canRepo.findById(1);
-		Candidate candidate2 = canRepo.findById(7);
+	public String resultCalcualte(@RequestParam(name="q", required=false, defaultValue="Ford") String name, Model model) {
+		Candidate candidate1 = null;
+		Candidate candidate2 = null;
+		
+		
+		candidate1 = canRepo.findByName(name);
+		candidate2 = canRepo.findById(candidate1.getId() + 1);
+		
 		Candidate wonCandidate = null;
 		Candidate lostCandidate = null;
 		boolean tie = false;

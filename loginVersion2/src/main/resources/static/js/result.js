@@ -32,6 +32,23 @@ let results = [
             img: "imgs/flat.jpg",
             percent: 51
         }
+    },
+	
+	{
+        q: "Pyra",
+        title: "Pyra vs Mythra",
+        description: "Who is the better character from Xenoblade Chronicles 2?",
+        total: 0,
+        candidate1: {
+            name: "Pyra",
+            img: "imgs/Pyra.jpg",
+            percent: 0
+        },
+        candidate2:  {
+            name: "Mythra",
+            img: "imgs/Mythra.jpg",
+            percent: 0
+        }
     }
 ]
 

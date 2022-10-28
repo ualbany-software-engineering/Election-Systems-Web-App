@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const CURRENT_ELECTIONS = document.querySelector('#current ul');
     const RECENT_ELECTIONS = document.querySelector('#recent ul');
     // example of adding elections with js
-    addElection('dynamic current election', q='dynamic_current', CURRENT_ELECTIONS, false);
-    addElection('dynamic recent election', q='dynamic_recent', RECENT_ELECTIONS, true);
+    //addElection('dynamic current election', q='dynamic_current', CURRENT_ELECTIONS, false);
+    //addElection('dynamic recent election', q='dynamic_recent', RECENT_ELECTIONS, true);
 
 });

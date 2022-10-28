@@ -25,7 +25,7 @@ public class CandidateRepoTest {
 	public void testCreateCandidate() {
 		
 		//change name to run different test
-		Candidate candidate = new Candidate("Chevy");
+		Candidate candidate = new Candidate("Mythra");
 		
 		Candidate savedCandidate = canRepo.save(candidate);
 		
@@ -34,9 +34,7 @@ public class CandidateRepoTest {
 		assertThat(existCandidate.getName()).isEqualTo(savedCandidate.getName());
 		
 	}//end testCreateCandidate
-	
 
-	
 	@Test
 	public void testFindCandidatebyId() {
 		
@@ -46,11 +44,22 @@ public class CandidateRepoTest {
 		Candidate candidate = canRepo.findById(Id);
 		
 		assertThat(candidate).isNotNull();
-	}//end testFindUserByUsername
+	}//end testFindCandidatebyId
+	
+	@Test
+	public void testFindCandidatebyName() {
+		
+		//change name to run different test
+		String name = "Pyra";
+		
+		Candidate candidate = canRepo.findByName(name);
+		
+		assertThat(candidate).isNotNull();
+	}//end testFindCandidatebyName
 	
 	@Test
 	public void testVote() {
-		Candidate candidateToVote = canRepo.findById(1);
+		Candidate candidateToVote = canRepo.findById(8);
 		int oldVote = candidateToVote.getVotes();
 		candidateToVote.setVotes(oldVote + 1);
 		
@@ -59,4 +68,5 @@ public class CandidateRepoTest {
 		assertThat(oldVote == (newVote - 1));
 		
 	}//end testVote
+	
 }
