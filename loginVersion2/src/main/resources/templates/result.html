@@ -82,7 +82,18 @@
 		
 		function decideWin(){
 		
-			if(wonCandidateID < lostCandidateID){
+			if(wonCandidateVotes == lostCandidateVotes){
+				setWinState(2, true, wonPercentage); setWinState(1, true, lostPercentage); 
+				setTotalVotes(totalVotes);
+				document.getElementById("candidate1_name").innerHTML = lostCandidateName;
+				document.getElementById("candidate2_name").innerHTML = wonCandidateName;
+				document.getElementById("candidate1_img").src = "imgs/" + lostCandidateName + ".jpg";
+				document.getElementById("candidate2_img").src = "imgs/" + wonCandidateName + ".jpg";
+				document.getElementById("candidate1_result").innerHTML = "Tie";
+				document.getElementById("candidate2_result").innerHTML = "Tie";
+					
+			}
+			else if(wonCandidateID < lostCandidateID){
 				setWinState(1, true, wonPercentage); setWinState(2, false, lostPercentage); 
 				setTotalVotes(totalVotes);
 				document.getElementById("candidate1_name").innerHTML = wonCandidateName;
@@ -97,7 +108,6 @@
 				document.getElementById("candidate2_name").innerHTML = wonCandidateName;
 				document.getElementById("candidate1_img").src = "imgs/" + lostCandidateName + ".jpg";
 				document.getElementById("candidate2_img").src = "imgs/" + wonCandidateName + ".jpg";
-			
 			}
 		}
 		

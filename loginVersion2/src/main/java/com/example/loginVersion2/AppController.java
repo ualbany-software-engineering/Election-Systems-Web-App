@@ -113,13 +113,11 @@ public class AppController {
 			lostCandidate = candidate1;
 		}//end if
 		else {
-			tie = true;
+			//doesn't matter here, JavaScript will take care of the results in the event of a tie
+			wonCandidate = candidate2;
+			lostCandidate = candidate1;
 		}//end else
 		
-		
-		if(tie == false) {
-			
-		}//end if
 		//System.out.printf("Candidate won id = %d\n", wonCandidate.id);
 		//System.out.printf("Candidate lost id = %d\n", lostCandidate.id);
 		model.addAttribute("wonCandidate", wonCandidate);
