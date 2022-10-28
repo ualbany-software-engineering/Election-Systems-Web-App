@@ -58,6 +58,15 @@ public class AppController {
 	public String showAdmin(Model model) {
 		
 		model.addAttribute("newTopic", new Topic());
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String username = authentication.getName().toString();
+		//String realUsername = username.substring(1, username.length() - 1);
+		String admin = "admin";
+		
+		if(!(username.equals("admin"))) {
+			return getUsernameHome(model);
+		}//end if
 
 		return "adminhome";
 	}
@@ -85,8 +94,9 @@ public class AppController {
 	public String resultCalcualte(@RequestParam(name="q", required=false, defaultValue="Ford") String name, Model model) {
 		Candidate candidate1 = null;
 		Candidate candidate2 = null;
-		
-		
+		Topic topicInfo = null;
+	
+		topicInfo = topicRepo.findByCandidate1(name);
 		candidate1 = canRepo.findByName(name);
 		candidate2 = canRepo.findById(candidate1.getId() + 1);
 		
@@ -114,6 +124,7 @@ public class AppController {
 		//System.out.printf("Candidate lost id = %d\n", lostCandidate.id);
 		model.addAttribute("wonCandidate", wonCandidate);
 		model.addAttribute("lostCandidate", lostCandidate);
+		model.addAttribute("topicInfo", topicInfo);
 		
 		return "result";
 	}

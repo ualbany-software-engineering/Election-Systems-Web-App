@@ -105,26 +105,26 @@ let results = [
  * @description gets vote info from result and display it
  * 
  * @param {string} query - query word of this result
- */
+ *
  function displayResult (query) {
     for (result of results) {
         if (result.q === query) {
             // display title and description
-            printTitle(result.title);
-            printDescription(result.description);
+            //printTitle(result.title);
+            //printDescription(result.description);
             // set candidate 1 info
-            populateCandidate(1, result.candidate1.name, result.candidate1.img);
+            //populateCandidate(1, result.candidate1.name, result.candidate1.img);
             // set candidate 2 info
-            populateCandidate(2, result.candidate2.name, result.candidate2.img);
+            //populateCandidate(2, result.candidate2.name, result.candidate2.img);
             // set total number of votes
-            setTotalVotes(result.total);
+            //setTotalVotes(result.total);
             // example of setting candidate 1 as loser
-            setWinState(1, result.candidate1.percent > result.candidate2.percent, result.candidate1.percent);
+            //setWinState(1, result.candidate1.percent > result.candidate2.percent, result.candidate1.percent);
             // example of setting candidate 2 as winner
-            setWinState(2, result.candidate2.percent > result.candidate1.percent, result.candidate2.percent);
+            //setWinState(2, result.candidate2.percent > result.candidate1.percent, result.candidate2.percent);
         } 
     }
-}
+}*/
 
 // once the document is loaded
 
@@ -133,5 +133,5 @@ document.addEventListener('DOMContentLoaded', function () {
     const CURRENT_URL = new URL(window.location.href);
     const QUERY = CURRENT_URL.searchParams.get("q");
     // print result
-    displayResult(QUERY);
+    //displayResult(QUERY);
 });

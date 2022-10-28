@@ -14,7 +14,7 @@
 
     <div id="header">
         <a href="results"><button id="home">Back to Results</button></a>
-        <h1>Result: {Election Title}</h1>
+        <h1 id="title">Result: {Election Title}</h1>
         <div>
 	        <form th:action="@{/logout}" method="post">
 	       		<button>Logout</button>
@@ -30,8 +30,8 @@
 
         <!-- 1st candidate -->
         <div id="candidate1" class="candidate won">
-            <h2 class="candidate_name">Candidate1 Name</h2>
-            <img class="candidate_img" src="imgs/candidate.jpg">
+            <h2 class="candidate_name" id="candidate1_name">Candidate1 Name</h2>
+            <img class="candidate_img" id="candidate1_img" src="imgs/candidate.jpg">
             <h3 id="candidate1_result">
                 Won
             </h3>
@@ -40,8 +40,8 @@
 
         <!-- 2nd candidate -->
         <div id="candidate2" class="candidate lost">
-            <h2 class="candidate_name">Candidate2 Name</h2>
-            <img class="candidate_img" src="imgs/candidate.jpg">
+            <h2 class="candidate_name" id="candidate2_name">Candidate2 Name</h2>
+            <img class="candidate_img" id="candidate2_img" src="imgs/candidate.jpg">
             <h3 id="candidate2_result">
                 Lost
             </h3>
@@ -67,25 +67,38 @@
 		var lostCandidateID = [[${lostCandidate.id}]];
 		var lostCandidateName = [[${lostCandidate.name}]];
 		var lostCandidateVotes = [[${lostCandidate.votes}]];
+		var topicDescription = [[${topicInfo.description}]];
+		var topicName = [[${topicInfo.description}]];
+
+		
 		
 		var totalVotes = wonCandidateVotes + lostCandidateVotes
 		
 		var wonPercentage = Math.round(wonCandidateVotes / totalVotes * 100);
 		var lostPercentage = 100 - wonPercentage;
 		
+		document.getElementById("description").innerHTML = topicDescription;
+		document.getElementById("title").innerHTML = "Result: " + topicName;
+		
 		function decideWin(){
 		
 			if(wonCandidateID < lostCandidateID){
 				setWinState(1, true, wonPercentage); setWinState(2, false, lostPercentage); 
 				setTotalVotes(totalVotes);
+				document.getElementById("candidate1_name").innerHTML = wonCandidateName;
+				document.getElementById("candidate2_name").innerHTML = lostCandidateName;
+				document.getElementById("candidate1_img").src = "imgs/" + wonCandidateName + ".jpg";
+				document.getElementById("candidate2_img").src = "imgs/" + lostCandidateName + ".jpg";
 			}
 			else{
 				setWinState(2, true, wonPercentage); setWinState(1, false, lostPercentage); 
 				setTotalVotes(totalVotes);
+				document.getElementById("candidate1_name").innerHTML = lostCandidateName;
+				document.getElementById("candidate2_name").innerHTML = wonCandidateName;
+				document.getElementById("candidate1_img").src = "imgs/" + lostCandidateName + ".jpg";
+				document.getElementById("candidate2_img").src = "imgs/" + wonCandidateName + ".jpg";
 			
 			}
-			
-		
 		}
 		
 	</script>
