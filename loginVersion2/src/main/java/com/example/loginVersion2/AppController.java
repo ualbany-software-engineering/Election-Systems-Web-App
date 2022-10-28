@@ -25,6 +25,9 @@ public class AppController {
 	@Autowired
 	private CandidateRepository canRepo;
 	
+	@Autowired
+	private TopicRepository topicRepo;
+	
 	@GetMapping("")
 	public String viewHomePage() {	
 	
@@ -54,7 +57,7 @@ public class AppController {
 	@GetMapping("/adminhome")
 	public String showAdmin(Model model) {
 		
-		model.addAttribute("user", new User());
+		model.addAttribute("newTopic", new Topic());
 
 		return "adminhome";
 	}
@@ -64,11 +67,16 @@ public class AppController {
 		Candidate candidate1 = null;
 		Candidate candidate2 = null;
 		
+		Topic topicInfo = null;
+		
 		candidate1 = canRepo.findByName(name);
 		candidate2 = canRepo.findById(candidate1.getId() + 1);
 		
+		topicInfo = topicRepo.findByCandidate1(name);
+		
 		model.addAttribute("candidate1", candidate1);
 		model.addAttribute("candidate2", candidate2);
+		model.addAttribute("topicInfo", topicInfo);
 		
 		return "voting";
 	}
@@ -119,6 +127,23 @@ public class AppController {
 		
 		repo.save(user);
 		return "register_success";
+	}
+	
+	
+	@PostMapping("/add_topic")
+	public String processTopic(Topic newTopic) {
+		
+		String name1 = newTopic.getCandidate1();
+		String name2 = newTopic.getCandidate2();
+		
+		Candidate candidate1 = new Candidate(name1);
+		Candidate candidate2 = new Candidate(name2);
+		
+		topicRepo.save(newTopic);
+		canRepo.save(candidate1);
+		canRepo.save(candidate2);
+		
+		return "topic_success";
 	}
 	
 	@PostMapping("/confirm_vote")

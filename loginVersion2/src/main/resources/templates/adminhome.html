@@ -17,32 +17,28 @@
 
     <!-- sign up form -->
     <div class="login_signup" id="signup">
+    	<form th:action="@{/add_topic}" method="post" th:object="${newTopic}">
             <div class="login_input">
                 <p>First Candidate Name</p>
-                <input type="text" id="candidate1nameId" name="candidate1name">
+                <input type="text" id="candidate1nameId" name="candidate1name" th:field="*{candidate1}" required>
             </div>
             <div class="login_input">
                 <p>Second Candidate Name</p>
-                <input type="text"  id="candidate2nameId" name="candidate2name">
+                <input type="text"  id="candidate2nameId" name="candidate2name" th:field="*{candidate2}" required>
             </div>
             <div class="login_input">
                 <p>Description</p>
-                <input type="text" id="descriptionId" name="description">
+                <input type="text" id="descriptionId" name="description" th:field="*{description}" required>
             </div>
             <div class="login_input">
-                <p>First Candidate Image</p>
-                <input type="text" id="candidate1ImageId">
+                <p>Topic Name</p>
+                <input type="text" id="topicnameId" name="topicName" th:field="*{name}" required>
             </div>
             
-            <div class="login_input">
-                <p>Second Candidate Image</p>
-                <input type="text" id="candidate2ImageId">
-            </div>
-
+           
             <!-- submit button -->
-            <button type="submit" class="btn btn-primary" onclick="addTopic(document.getElementById('candidate1nameId').value, 
-            document.getElementById('candidate2nameId').value, document.getElementById('descriptionId').value,
-            document.getElementById('candidate1ImageId').value, document.getElementById('candidate2ImageId').value)">Add Candidate</button>
+            <button type="submit" class="btn btn-primary">Add Topic</button>
+         </form>   
     </div>
 
     <!-- footer -->

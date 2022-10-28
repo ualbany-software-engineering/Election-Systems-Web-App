@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/voting.css">
   </head>
-  <body onload = "displayVote(candidate1.name);">
+  <body>
 
     <div id="header">
         <a href="homepage"><button id="home">Back to Home</button></a>
-        <h1>Ford vs Chevy</h1>
+        <h1 id="title">Title Here</h1>
         <form th:action="@{/logout}" method="post">
             <button>Logout</button>
          </form>
@@ -21,11 +21,11 @@
     </div>
   
     <div id="election">
-		<p id="description" style="font-size: 30px;">Which car manufacturer do you prefer?</p>
+		<p id="description" style="font-size: 30px;">Description Here</p>
         <!-- 1st candidate -->
         <div id="candidate1" class="candidate">
-            <h2 class="candidate_name">Ford</h2>
-            <img class="candidate_img" src="imgs/Ford_logo.png">
+            <h2 class="candidate_name" id="candidate1_name">Name here</h2>
+            <img class="candidate_img" id="candidate1_img" src="imgs/candidate.jpg">
             
             <form th:action="@{/confirm_vote}" method="post" th:object="${id}">
             <input type="hidden" name="id" th:value="${candidate1.id}"/>
@@ -35,8 +35,8 @@
 
         <!-- 2nd candidate -->
         <div id="candidate2" class="candidate">
-            <h2 class="candidate_name">Chevy</h2>
-            <img class="candidate_img" src="imgs/Chevy_logo.png">
+            <h2 class="candidate_name" id="candidate2_name">Name here</h2>
+            <img class="candidate_img" id="candidate2_img" src="imgs/candidate.jpg">
 			<form th:action="@{/confirm_vote}" method="post" th:object="${id}">
 				<input type="hidden" name="id" th:value="${candidate2.id}">
 				<button>Vote</button>
@@ -54,5 +54,23 @@
 
 	<script src="js/election.js"></script>
 	<script src="js/voting.js"></script>
+	
+	<script th:inline="javascript">
+		var topicName = [[${topicInfo.name}]];
+		var topicDescription = [[${topicInfo.description}]];
+		
+		var candidate1Name = [[${candidate1.name}]]; 
+		var candidate2Name = [[${candidate2.name}]]; 
+		
+		
+		
+		document.getElementById("description").innerHTML = topicDescription;
+		document.getElementById("title").innerHTML = topicName;
+		document.getElementById("candidate1_name").innerHTML = candidate1Name;
+		document.getElementById("candidate2_name").innerHTML = candidate2Name;
+		document.getElementById("candidate1_img").src = "imgs/" + candidate1Name + ".jpg";
+		document.getElementById("candidate2_img").src = "imgs/" + candidate2Name + ".jpg";
+		
+	</script>
   </body>
 </html>

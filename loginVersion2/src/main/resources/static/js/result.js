@@ -49,6 +49,22 @@ let results = [
             img: "imgs/Mythra.jpg",
             percent: 0
         }
+    },
+	{
+        q: "Noah",
+        title: "Noah vs Mio",
+        description: "Who is the better character from Xenoblade Chronicles 3?",
+		total: 0,
+        candidate1: {
+            name: "Noah",
+            img: "imgs/Noah.jpg",
+			percent: 0
+        },
+        candidate2:  {
+            name: "Mio",
+            img: "imgs/Mio.jpg",
+			percent: 0
+        }
     }
 ]
 

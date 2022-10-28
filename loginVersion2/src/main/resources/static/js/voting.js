@@ -64,33 +64,6 @@ let current = [
             name: "Samsung",
             img: "imgs/samsung.png",
         }
-    },
-	{
-        q: "Pyra",
-        title: "Pyra vs Mythra",
-        description: "Who is the better character from Xenoblade Chronicles 2?",
-        candidate1: {
-            name: "Pyra",
-            img: "imgs/Pyra.jpg",
-        },
-        candidate2:  {
-            name: "Mythra",
-            img: "imgs/Mythra.jpg",
-        }
-    }
-	,
-	{
-        q: "Noah",
-        title: "Noah vs Mio",
-        description: "Who is the better character from Xenoblade Chronicles 3?",
-        candidate1: {
-            name: "Noah",
-            img: "imgs/Noah.jpg",
-        },
-        candidate2:  {
-            name: "Mio",
-            img: "imgs/Mio.jpg",
-        }
     }
 ]
 
@@ -113,20 +86,11 @@ let current = [
         } 
     }
 	
-	console.log(JSON.stringify(current, null, " "));
+	//console.log(JSON.stringify(current, null, " "));
 }
 
-function addTopic(inputCandidate1, inputCandidate2, topicTitle, candidate1Img, candidate2Img){
-	
-	console.log(inputCandidate1);
-	
-	var newTopic = {q: inputCandidate1, title: topicTitle, candidate1:{name: inputCandidate1,
-	img: candidate1Img}, candidate2: {name: inputCandidate2, img: candidate2Img}};
-	
-	current.push(newTopic);
-	console.log(JSON.stringify(current, null, " "));
-	
-}//end addCAndidate
+
+
 
 // once the document is loaded
 document.addEventListener('DOMContentLoaded', function () {
