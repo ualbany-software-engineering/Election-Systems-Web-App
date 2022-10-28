@@ -83,6 +83,10 @@ public class AppController {
 		
 		topicInfo = topicRepo.findByCandidate1(name);
 		
+		if(topicInfo.getActive() == 0) {
+			return "inactive";
+		}//end if
+		
 		model.addAttribute("candidate1", candidate1);
 		model.addAttribute("candidate2", candidate2);
 		model.addAttribute("topicInfo", topicInfo);
@@ -147,7 +151,7 @@ public class AppController {
 		
 		Candidate candidate1 = new Candidate(name1);
 		Candidate candidate2 = new Candidate(name2);
-		
+		newTopic.setActive(1);
 		topicRepo.save(newTopic);
 		canRepo.save(candidate1);
 		canRepo.save(candidate2);

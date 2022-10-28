@@ -78,5 +78,22 @@ public class TopicRepoTest {
 		
 		
 	}//end testFindTopicCandidate1
+	
+	@Test
+	public void testChangeActive() {
+		
+		String topicString = "Pyra vs Mythra";
+		
+		Topic topic = topicRepo.findByName(topicString);
+		
+		int active = 1;
+		
+		topic.setActive(active);
+		
+		
+		assertThat(topic.getActive()).isEqualTo(active);
+		
+		
+	}//end testFindTopicCandidate1
 
 }

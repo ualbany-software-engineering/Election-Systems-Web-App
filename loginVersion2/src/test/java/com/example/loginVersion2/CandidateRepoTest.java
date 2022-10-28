@@ -50,7 +50,7 @@ public class CandidateRepoTest {
 	public void testFindCandidatebyName() {
 		
 		//change name to run different test
-		String name = "Pyra";
+		String name = "Early Bird";
 		
 		Candidate candidate = canRepo.findByName(name);
 		

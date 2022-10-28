@@ -27,6 +27,17 @@ public class Topic {
 	
 	@Column(nullable = false, unique = true, length = 400)
 	private String description;
+	
+	@Column(nullable = false, unique = false)
+	private int active;
+
+	public int getActive() {
+		return active;
+	}
+
+	public void setActive(int active) {
+		this.active = active;
+	}
 
 	public String getDescription() {
 		return description;
