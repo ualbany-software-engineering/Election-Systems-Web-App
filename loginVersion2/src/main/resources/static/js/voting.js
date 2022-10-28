@@ -78,6 +78,20 @@ let current = [
             img: "imgs/Mythra.jpg",
         }
     }
+	,
+	{
+        q: "Noah",
+        title: "Noah vs Mio",
+        description: "Who is the better character from Xenoblade Chronicles 3?",
+        candidate1: {
+            name: "Noah",
+            img: "imgs/Noah.jpg",
+        },
+        candidate2:  {
+            name: "Mio",
+            img: "imgs/Mio.jpg",
+        }
+    }
 ]
 
 

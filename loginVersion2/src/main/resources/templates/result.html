@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/voting.css">
     <link rel="stylesheet" href="css/result.css">
   </head>
-  <body onload = "setWinState(1, true, wonPercentage); setWinState(2, false, lostPercentage); setTotalVotes(totalVotes);">
+  <body onload = "decideWin();">
 
     <div id="header">
         <a href="results"><button id="home">Back to Results</button></a>
@@ -72,6 +72,21 @@
 		
 		var wonPercentage = Math.round(wonCandidateVotes / totalVotes * 100);
 		var lostPercentage = 100 - wonPercentage;
+		
+		function decideWin(){
+		
+			if(wonCandidateID < lostCandidateID){
+				setWinState(1, true, wonPercentage); setWinState(2, false, lostPercentage); 
+				setTotalVotes(totalVotes);
+			}
+			else{
+				setWinState(2, true, wonPercentage); setWinState(1, false, lostPercentage); 
+				setTotalVotes(totalVotes);
+			
+			}
+			
+		
+		}
 		
 	</script>
   </body>
