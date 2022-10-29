@@ -14,6 +14,31 @@
         <a href="homepage"><button id="loginButton">Return to Home</button></a>
         <h1>THIS IS A TEMPLATE FOR FUTURE ADMIN CONTROLS</h1>
     </div>
+    
+    <div id="reset" align="right">
+	    <form th:action="@{/reset_vote0}" method="post" >
+	    	<button type="submit" style="height:50px;width:200px" class="btn btn-primary">Reset Vote0</button>
+	    </form>
+	 </div>
+	 <div id="reset" style="margin-top:30px;" align="right">
+	    <form th:action="@{/reset_vote1}" method="post" >
+	    	<button type="submit" style="height:50px;width:200px" class="btn btn-primary">Reset Vote1</button>
+	    </form>
+	 </div>
+	 <div id="reset" style="margin-top:30px;" align="right">
+	    <form th:action="@{/reset_vote2}" method="post" >
+	    	<button type="submit" style="height:50px;width:200px" class="btn btn-primary">Reset Vote2</button>
+	    </form>
+	 </div>
+    
+    
+    <div class="change_active" style="margin-bottom:900px;" id="active">
+	    <form th:action="@{/change_active}" method="post" >
+	    	<input type="text" size="60px" name="topicName" required/>
+	    	<button type="submit" style="height:50px;width:200px"class="btn btn-primary">Change Status</button>
+	    </form>
+	 </div>
+    
 
     <!-- sign up form -->
     <div class="login_signup" id="signup">
@@ -40,15 +65,8 @@
             <button type="submit" class="btn btn-primary">Add Topic</button>
          </form>   
     </div>
-
-    <!-- footer -->
-    <ul id="footer">
-        <li><a href="home">Home</a></li>
-        <li><a href="">About</a></li>
-        <li><a href="">Legal (?)</a></li>
-        <li><a href="">Other Info</a></li>
-    </ul>
     
+	
     <script src="js/voting.js"></script>
     <script src="js/result.js"></script>
 

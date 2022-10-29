@@ -21,6 +21,31 @@ public class User {
 	@Column(nullable = false, length = 20)
 	private String name;
 	
+	@Column(nullable = false, unique = false)
+	private int voting0;
+	@Column(nullable = false, unique = false)
+	private int voting1;
+	@Column(nullable = false, unique = false)
+	private int voting2;
+	
+	public int getVoting0() {
+		return voting0;
+	}
+	public void setVoting0(int voting0) {
+		this.voting0 = voting0;
+	}
+	public int getVoting1() {
+		return voting1;
+	}
+	public void setVoting1(int voting1) {
+		this.voting1 = voting1;
+	}
+	public int getVoting2() {
+		return voting2;
+	}
+	public void setVoting2(int voting2) {
+		this.voting2 = voting2;
+	}
 	public long getId() {
 		return id;
 	}

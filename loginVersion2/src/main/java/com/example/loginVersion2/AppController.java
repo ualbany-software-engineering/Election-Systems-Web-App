@@ -2,6 +2,9 @@ package com.example.loginVersion2;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -83,6 +86,7 @@ public class AppController {
 		
 		topicInfo = topicRepo.findByCandidate1(name);
 		
+		
 		if(topicInfo.getActive() == 0) {
 			return "inactive";
 		}//end if
@@ -159,14 +163,142 @@ public class AppController {
 		return "topic_success";
 	}
 	
+	@PostMapping("/change_active")
+	public String changeActive(@RequestParam String topicName) {
+		
+		Topic topic = topicRepo.findByName(topicName);
+		int currentStatus = topic.getActive();
+		
+		if(currentStatus == 0) {
+			topic.setActive(1);
+			topicRepo.save(topic);
+		}//end if
+		else{
+			topic.setActive(0);
+			topicRepo.save(topic);
+		}//end else
+		
+		return "topic_success";
+	}
+	
+	@PostMapping("reset_vote0")
+	public String resetVote0() {
+		
+		User user = null;
+		long totalEntries = repo.count();
+		long looper = 0;
+		long currentId = 0;
+		
+		while(looper < totalEntries) {
+			user = repo.findById(currentId);
+			currentId++;
+			if(user != null) {
+				user.setVoting0(0);
+				looper++;
+				repo.save(user);
+				user = null;
+			}//end if
+		}//end while
+		
+		return "topic_success";
+	}//end if
+	
+	@PostMapping("reset_vote1")
+	public String resetVote1() {
+		
+		User user = null;
+		long totalEntries = repo.count();
+		long looper = 0;
+		long currentId = 0;
+		
+		while(looper < totalEntries) {
+			user = repo.findById(currentId);
+			currentId++;
+			if(user != null) {
+				user.setVoting1(0);
+				repo.save(user);
+				looper++;
+				user = null;
+			}//end if
+		}//end while
+		
+		return "topic_success";
+	}//end if
+	
+	@PostMapping("reset_vote2")
+	public String resetVote2() {
+		
+		User user = null;
+		long totalEntries = repo.count();
+		long looper = 0;
+		long currentId = 0;
+		
+		while(looper < totalEntries) {
+			user = repo.findById(currentId);
+			currentId++;
+			if(user != null) {
+				user.setVoting2(0);
+				repo.save(user);
+				looper++;
+				user = null;
+			}//end if
+		}//end while
+		
+		return "topic_success";
+	}//end if
+	
 	@PostMapping("/confirm_vote")
 	public String processVote(long id) {
-		
+		Topic topicInfo = null;
 		Candidate candidateToVote = canRepo.findById(id);
+		
+		topicInfo = topicRepo.findByCandidate1(candidateToVote.getName());
+		
+		//if app cannot find candidate1 with that id, then it must be candidate2
+		if(topicInfo == null) {
+			topicInfo = topicRepo.findByCandidate2(candidateToVote.getName());
+		}//end if
+		
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String username = authentication.getName().toString();
+		User user = repo.findByUsername(username);
+		
+		long voteSlot = topicInfo.getId() % 3;
+		
+		if(voteSlot == 0) {
+			if(user.getVoting0() == 1) {
+				return "inactive";
+			}//end if
+		}//end if
+		else if(voteSlot == 1) {
+			if(user.getVoting1() == 1) {
+				return "inactive";
+			}//end if
+		}//end if
+		else if(voteSlot == 2) {
+			if(user.getVoting2() == 1) {
+				return "inactive";
+			}//end if
+		}//end if
+		
 		int oldVote = candidateToVote.getVotes();
 		candidateToVote.setVotes(oldVote + 1);
 		
 		canRepo.save(candidateToVote);
+		
+		if(voteSlot == 0) {
+			user.setVoting0(1);
+			repo.save(user);
+		}//end if
+		else if(voteSlot == 1) {
+			user.setVoting1(1);
+			repo.save(user);
+		}//end if
+		else if(voteSlot == 2) {
+			user.setVoting2(1);
+			repo.save(user);
+		}//end if
 		
 		return "submitted";
 	}

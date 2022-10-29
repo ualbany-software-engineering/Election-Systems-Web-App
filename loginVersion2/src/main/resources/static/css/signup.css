@@ -2,6 +2,8 @@ body {
     grid-template-areas: 
     "header"
     "signup"
+	"reset"
+	"active"
     "footer";
     grid-template-rows: 7em 1fr 3em;
     grid-template-columns: 1fr;
@@ -26,8 +28,23 @@ h1 {
     border: 0;
 }
 
+#active{
+	border: 0;
+}
+#reset{
+	
+}
+
 .login_signup form {
     align-items: center;
+}
+
+.change_active form{
+	align-items: right;
+}
+
+.reset form{
+	
 }
 
 .login_input {
