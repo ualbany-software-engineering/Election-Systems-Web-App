@@ -13,23 +13,42 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+/**
+ * 
+ * @author Jon Rhea
+ * This class handles all authentication methods
+ */
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+	//declare datasource
 	@Autowired
 	private DataSource dataSource;
 	
+	/**
+	 * Bean to create a new CustomUserDetailsService
+	 * @return The new CustomUserDetailsService object
+	 */
 	@Bean
 	public UserDetailsService userDetailsService() {
 		return new CustomUserDetailsService();
-	}
+	}//end userDetailsService
 	
+	/**
+	 * Bean to create a new BCryptPasswordEncoder
+	 * @return The new BCryptPasswordEncoder object
+	 */
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
-	}
+	}//end passwordEncoder
 	
+	/**
+	 * Sets up the authentication information
+	 * @return The new authentication provider 
+	 * Note that the password encoder is the BCryptPasswordEncoder method from above
+	 */
 	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -37,13 +56,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		authProvider.setPasswordEncoder(passwordEncoder());
 		
 		return authProvider;
-	}
+	}//end authenticatoinProvider
 
+	/**
+	 * Actually configures the authentication provider
+	 */
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.authenticationProvider(authenticationProvider());
-	}
+	}//end configure
 
+	/**
+	 * Checks to see if user is authenticated before visitng any of the pages in the app
+	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
@@ -61,7 +86,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.permitAll()
 			.and()
 			.logout().logoutSuccessUrl("/").permitAll();
-	}
-	
-	
-}
+	}//end configure
+}//end class

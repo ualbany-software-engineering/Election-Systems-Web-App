@@ -7,10 +7,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * 
+ * @author Jon Rhea
+ * All the information about a topic and the database attributes
+ */
 @Entity
 @Table(name = "topics")
-
 public class Topic {
+	
+	//declare all database attributes
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long id;
@@ -31,6 +37,8 @@ public class Topic {
 	@Column(nullable = false, unique = false)
 	private int active;
 
+	//getters and setters for each attribute are listed below
+	
 	public int getActive() {
 		return active;
 	}
@@ -79,7 +87,10 @@ public class Topic {
 		this.candidate2 = candidate2;
 	}
 	
+	/**
+	 * Constructs a blank Topic object
+	 */
 	public Topic() {
 		super();
-	}
+	}//end constructor
 }//end class

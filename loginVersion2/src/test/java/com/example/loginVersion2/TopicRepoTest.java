@@ -10,7 +10,11 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 
-
+/**
+ * 
+ * @author Jon Rhea
+ * Test methods for the topics table in the database
+ */
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)

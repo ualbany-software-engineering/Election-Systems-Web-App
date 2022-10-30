@@ -7,10 +7,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * 
+ * @author Jon Rhea
+ * All the information about a candidate and the database attributes
+ */
 @Entity
 @Table(name = "candidates")
 
 public class Candidate {
+	
+	//eclare all database attributes
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public long id;
@@ -20,6 +27,8 @@ public class Candidate {
 
 	@Column(nullable = false, unique = true, length = 20, updatable = true)
 	private int votes;
+	
+	//getters and setters for all attributes are listed below
 	
 	public long getId() {
 		return id;
@@ -51,10 +60,11 @@ public class Candidate {
 		votes = 0;
 	}
 	
-	//default constructor only used for unit tests as of now
+	/**
+	 * Constructs a blank Candidate object
+	 */
 	public Candidate() {
 		super();
-
-	}
+	}//end constructor
 	
 }//end class

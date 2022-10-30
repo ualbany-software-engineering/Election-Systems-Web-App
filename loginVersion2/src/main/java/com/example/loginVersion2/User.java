@@ -7,9 +7,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * 
+ * @author Jon Rhea
+ * All the information about a user and the database attributes
+ */
 @Entity
 @Table(name = "users")
 public class User {
+	
+	//declare all database attributes
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -27,6 +34,8 @@ public class User {
 	private int voting1;
 	@Column(nullable = false, unique = false)
 	private int voting2;
+	
+	//getters and setters for each attribute in the users table are listed below
 	
 	public int getVoting0() {
 		return voting0;

@@ -1,11 +1,5 @@
 package com.example.loginVersion2;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,12 +10,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * 
+ * @author Jon Rhea
+ * This class handles all GET and POST requests that require back-end and database work
+ */
 @Controller
 public class AppController {
 	
-	//ScriptEngineManager manager = new ScriptEngineManager();
-	//ScriptEngine engine = manager.getEngineByName("JavaScript");
 
+	//declare repositories
 	@Autowired
 	private UserRepository repo;
 	
@@ -31,14 +29,20 @@ public class AppController {
 	@Autowired
 	private TopicRepository topicRepo;
 	
+	/**
+	 * Views index.html when to page is passed in the URL
+	 * @return The index page
+	 */
 	@GetMapping("")
 	public String viewHomePage() {	
-	
-
-			 
 		return "index";
-	}
+	}//end viewHomePage
 	
+	/**
+	 * Gets the user's username and adds it to the Model
+	 * @param model The Model variables shared with the front-end
+	 * @return The homepage 
+	 */
 	@GetMapping("/homepage")
 	public String getUsernameHome(Model model) {
 		
@@ -48,15 +52,25 @@ public class AppController {
 		model.addAttribute("user", user);
 
 		return "homepage";
-	}
+	}//end getUsernameHome
 	
+	/**
+	 * Creates a blank user object for users who are about to sign up
+	 * @param model The Model variables shared with the front-end
+	 * @return The signup page
+	 */
 	@GetMapping("/signup")
 	public String showSignUp(Model model) {
 		model.addAttribute("user", new User());
 
 		return "signup";
-	}
+	}//end showSignUp
 	
+	/**
+	 * Redirects to the admin home page if the user is "admin"
+	 * @param model The Model variables shared with the front-end
+	 * @return The adminhome page is user is admin, regular homepage is user is not admin
+	 */
 	@GetMapping("/adminhome")
 	public String showAdmin(Model model) {
 		
@@ -72,8 +86,14 @@ public class AppController {
 		}//end if
 
 		return "adminhome";
-	}
-	
+	}//end showAdmin
+
+	/**
+	 * If topic is active, get's the candidates to the topic passed and sends it to the front-end
+	 * @param name The name of the first candidate in a topic; this is what is sued to figure out the topic
+	 * @param model The Model variables shared with the front-end
+	 * @return The voting page is the topic is active, the inactive error page is topic is not active
+	 */
 	@GetMapping("/voting")
 	public String showVoting(@RequestParam(name="q", required=false) String name, Model model) {
 		Candidate candidate1 = null;
@@ -96,10 +116,16 @@ public class AppController {
 		model.addAttribute("topicInfo", topicInfo);
 		
 		return "voting";
-	}
+	}//end showVoting
 	
+	/**
+	 * Calculates who one a topic and sends that info to the front-end
+	 * @param name The name of the first candidate in a topic; this is what is sued to figure out the topic
+	 * @param model The Model variables shared with the front-end
+	 * @return The result page
+	 */
 	@GetMapping("/result")
-	public String resultCalcualte(@RequestParam(name="q", required=false, defaultValue="Ford") String name, Model model) {
+	public String resultCalcualte(@RequestParam(name="q", required=false) String name, Model model) {
 		Candidate candidate1 = null;
 		Candidate candidate2 = null;
 		Topic topicInfo = null;
@@ -110,7 +136,6 @@ public class AppController {
 		
 		Candidate wonCandidate = null;
 		Candidate lostCandidate = null;
-		boolean tie = false;
 		
 		if(candidate1.getVotes() > candidate2.getVotes()) {
 			wonCandidate = candidate1;
@@ -126,27 +151,34 @@ public class AppController {
 			lostCandidate = candidate1;
 		}//end else
 		
-		//System.out.printf("Candidate won id = %d\n", wonCandidate.id);
-		//System.out.printf("Candidate lost id = %d\n", lostCandidate.id);
 		model.addAttribute("wonCandidate", wonCandidate);
 		model.addAttribute("lostCandidate", lostCandidate);
 		model.addAttribute("topicInfo", topicInfo);
 		
 		return "result";
-	}
+	}//end resultCalculate
 	
-
+	/**
+	 * Adds a new user to the database
+	 * @param user The user to be added to the database; info is retrieved from front-end user input
+	 * @return The register_success page
+	 */
 	@PostMapping("/process_register")
 	public String processRegestration(User user) {
+		//encode the password before putting it in the database
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String encodedPassword = encoder.encode(user.getPassword());
 		user.setPassword(encodedPassword);
 		
 		repo.save(user);
 		return "register_success";
-	}
+	}//end processRegistration
 	
-	
+	/**
+	 * Adds a new topic to the database
+	 * @param newTopic The new topic to be added to the database; info is retrieved from front-end admin input
+	 * @return The topic_success page
+	 */
 	@PostMapping("/add_topic")
 	public String processTopic(Topic newTopic) {
 		
@@ -161,8 +193,13 @@ public class AppController {
 		canRepo.save(candidate2);
 		
 		return "topic_success";
-	}
+	}//end processTopic
 	
+	/**
+	 * Changes to active status of a topic
+	 * @param topicName The topic to change the active status; info is retrieved from front-end admin input
+	 * @return The topic_success page (may create its own page later)
+	 */
 	@PostMapping("/change_active")
 	public String changeActive(@RequestParam String topicName) {
 		
@@ -179,8 +216,12 @@ public class AppController {
 		}//end else
 		
 		return "topic_success";
-	}
+	}//end changeActive
 	
+	/**
+	 * Sets the voting0 variable to 0 for all users
+	 * @return The topic_success page (may create its own page later)
+	 */
 	@PostMapping("reset_vote0")
 	public String resetVote0() {
 		
@@ -201,8 +242,12 @@ public class AppController {
 		}//end while
 		
 		return "topic_success";
-	}//end if
+	}//end resetVote0
 	
+	/**
+	 * Sets the voting1 variable to 0 for all users
+	 * @return The topic_success page (may create its own page later)
+	 */
 	@PostMapping("reset_vote1")
 	public String resetVote1() {
 		
@@ -223,8 +268,12 @@ public class AppController {
 		}//end while
 		
 		return "topic_success";
-	}//end if
+	}//end resetVote1
 	
+	/**
+	 * Sets the voting2 variable to 0 for all users
+	 * @return The topic_success page (may create its own page later)
+	 */
 	@PostMapping("reset_vote2")
 	public String resetVote2() {
 		
@@ -245,8 +294,13 @@ public class AppController {
 		}//end while
 		
 		return "topic_success";
-	}//end if
+	}//end resetVote2
 	
+	/**
+	 * Confirms that the vote is valid and adds it towards the candidate
+	 * @param id The id of the candidate to vote for
+	 * @return The submitted page is vote is successful, the inactive page if not successful
+	 */
 	@PostMapping("/confirm_vote")
 	public String processVote(long id) {
 		Topic topicInfo = null;
@@ -259,7 +313,7 @@ public class AppController {
 			topicInfo = topicRepo.findByCandidate2(candidateToVote.getName());
 		}//end if
 		
-		
+		//get user authentication to get for voting attributes
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String username = authentication.getName().toString();
 		User user = repo.findByUsername(username);
@@ -282,6 +336,7 @@ public class AppController {
 			}//end if
 		}//end if
 		
+		//if code here is executed, the vote is valid
 		int oldVote = candidateToVote.getVotes();
 		candidateToVote.setVotes(oldVote + 1);
 		
@@ -301,6 +356,6 @@ public class AppController {
 		}//end if
 		
 		return "submitted";
-	}
+	}//end processVote
 	
-}
+}//end class

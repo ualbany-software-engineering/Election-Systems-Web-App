@@ -1,18 +1,20 @@
 package com.example.loginVersion2;
 
-
-
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * 
+ * @author Jon Rhea
+ * Configures all the HTML files to view names
+ */
 @Configuration
 public class MyConfig implements WebMvcConfigurer {
 
 	public void addViewControllers(ViewControllerRegistry registry) {
 		registry.addViewController("/homepage").setViewName("homepage");
 		registry.addViewController("/").setViewName("index");
-		//registry.addViewController("/hello").setViewName("hello");
 		registry.addViewController("/login").setViewName("login");
 		registry.addViewController("/voting").setViewName("voting");
 		registry.addViewController("/results").setViewName("results");
@@ -32,6 +34,5 @@ public class MyConfig implements WebMvcConfigurer {
 		registry.addViewController("/reset_vote2").setViewName("topic_success");
 		registry.addViewController("/inactive").setViewName("inactive");
 		registry.addViewController("/voting").setViewName("inactive");
-	}
-
-}
+	}//end addViewControllers
+}//end class
