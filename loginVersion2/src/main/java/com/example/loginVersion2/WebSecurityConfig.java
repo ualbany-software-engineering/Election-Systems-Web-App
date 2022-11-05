@@ -80,6 +80,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/adminhome").authenticated()
 			.antMatchers("/inactive").authenticated()
 			.antMatchers("/topic_success").authenticated()
+			 .antMatchers("/error").authenticated()
 			.anyRequest().permitAll()
 			.and()
 			.formLogin()

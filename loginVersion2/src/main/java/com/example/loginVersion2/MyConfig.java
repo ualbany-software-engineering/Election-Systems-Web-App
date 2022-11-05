@@ -34,5 +34,6 @@ public class MyConfig implements WebMvcConfigurer {
 		registry.addViewController("/reset_vote2").setViewName("topic_success");
 		registry.addViewController("/inactive").setViewName("inactive");
 		registry.addViewController("/voting").setViewName("inactive");
+		registry.addViewController("/error").setViewName("error");
 	}//end addViewControllers
 }//end class
