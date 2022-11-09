@@ -120,7 +120,7 @@ public class AppController {
 	
 	/**
 	 * Calculates who one a topic and sends that info to the front-end
-	 * @param name The name of the first candidate in a topic; this is what is sued to figure out the topic
+	 * @param name The name of the first candidate in a topic; this is what is used to figure out the topic
 	 * @param model The Model variables shared with the front-end
 	 * @return The result page
 	 */
@@ -131,6 +131,12 @@ public class AppController {
 		Topic topicInfo = null;
 	
 		topicInfo = topicRepo.findByCandidate1(name);
+		
+		//if topic is currently active, do not show results
+		if(topicInfo.getActive() == 1) {
+			return "error";
+		}//end if
+		
 		candidate1 = canRepo.findByName(name);
 		candidate2 = canRepo.findById(candidate1.getId() + 1);
 		
